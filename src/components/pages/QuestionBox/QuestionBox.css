@@ -3,7 +3,8 @@
   border-radius: 1.4rem;
   text-align: center;
   width: 70%;
-  max-height: 4rem;
+  height: 4rem;
+  text-align: center;
   font-size: 15px;
   background-color: #5f99ae;
   margin: 0 auto;
