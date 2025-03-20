@@ -1,0 +1,16 @@
+.questionBox__itemsBox__item {
+  padding: 0.4rem;
+  border-radius: 1.4rem;
+  text-align: center;
+  width: 70%;
+  max-height: 4rem;
+  font-size: 15px;
+  background-color: #5f99ae;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.questionBox__itemsBox__item:hover {
+  background-color: #3f7d58;
+}
