@@ -11,6 +11,14 @@ const QuestionBox = () => {
   const [timer, setTimer] = useState(5);
   const [isEnd, setIsEnd] = useState(false);
   //disable-eslint-next-line
+  const [submitedQuestions, setSubmitedQuestions] = useState([]);
+  const [note, setNote] = useState(0);
+
+  const answer = (obj, usrAnswer) => {
+    setCounter((c) => (c < allQuestions.length ? c + 1 : 0));
+    obj.id == usrAnswer ? setNote(note + 1) : setNote(note);
+  };
+  //disable-eslint-next-line
   const [skiped, setSkiped] = useState(0);
   useEffect(() => {
     const changeTimer = setInterval(() => {
@@ -63,11 +71,9 @@ const QuestionBox = () => {
                 return (
                   <div
                     className="questionBox__itemsBox__item"
-                    onClick={() =>
-                      setCounter((c) => (c < allQuestions.length ? c + 1 : 0))
-                    }
+                    onClick={() => answer(i, allQuestions[counter - 1].answer)}
                   >
-                    {i}
+                    {i.name}
                   </div>
                 );
               })}
@@ -76,7 +82,9 @@ const QuestionBox = () => {
         </>
       ) : (
         <>
-          <div className="endBox">Skipped Teile : {skiped}</div>
+          <div className="endBox">
+            Skipped Teile : {skiped} <br /> Note ist : {note}{" "}
+          </div>
         </>
       )}
     </>

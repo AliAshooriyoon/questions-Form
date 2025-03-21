@@ -29,7 +29,7 @@ const Home = () => {
                 Ja
               </button>
             </div>
-            <div className="captions__home text-center mt-44 max-w-[60%] mx-auto">
+            <div className="captions__home text-center mt-44 max-w-[60%] mx-auto mb-52 text-white">
               Die ist ein Beispiel für einen Blindtext, der auf deutsch
               geschrieben ist. Es gibt noch viele weitere Arten des Hauses,
               wobei die ersten Menschen heute nicht sind. Zudem sind Beispiele
