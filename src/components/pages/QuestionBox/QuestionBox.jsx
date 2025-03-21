@@ -13,7 +13,13 @@ const QuestionBox = () => {
     setTimer(5);
     const changeTimer = setInterval(() => {
       console.log(timer);
-      setTimer((time) => (time > 0 ? time - 1 : 0));
+      setTimer((time) =>
+        (time > 0) & (time != 1)
+          ? time - 1
+          : counter < allQuestions.length
+            ? setCounter(counter + 1)
+            : setCounter(0),
+      );
     }, 1000);
     return () => {
       clearInterval(changeTimer);
