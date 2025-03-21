@@ -10,26 +10,34 @@ const QuestionBox = () => {
   const [counter, setCounter] = useState(1);
   const [timer, setTimer] = useState(5);
   const [isEnd, setIsEnd] = useState(false);
+  //disable-eslint-next-line
+  const [skiped, setSkiped] = useState(0);
   useEffect(() => {
     const changeTimer = setInterval(() => {
-      console.log(timer);
+      console.log(`Counter ist ${counter}`);
       counter != 0
-        ? setTimer((time) =>
-            (time > 0) & (time != 1)
-              ? time - 1
-              : counter < allQuestions.length
-                ? setCounter(counter + 1)
-                : setCounter(0),
-          )
+        ? setTimer((time) => {
+            if (time > 0 && time != 1) {
+              return time - 1;
+            } else if (counter < allQuestions.length) {
+              console.log(`Skipped ist ${skiped}`);
+              setSkiped(skiped + 1);
+              setCounter(counter + 1);
+            } else {
+              setSkiped(skiped + 1);
+              setCounter(0);
+            }
+          })
         : clearInterval(changeTimer);
-      console.log(timer);
+      // console.log(`timer ist ${timer}`);
     }, 1000);
     return () => clearInterval(changeTimer);
   });
   useEffect(() => {
-    console.log(counter);
+    // console.log(counter);
+    counter == 0 && setIsEnd(true);
     setTimer(() => (!isEnd ? 5 : 0));
-  }, [counter]);
+  }, [counter, isEnd]);
   return (
     <>
       {counter ? (
@@ -67,7 +75,9 @@ const QuestionBox = () => {
           </div>
         </>
       ) : (
-        <p>End</p>
+        <>
+          <div className="endBox">Skipped Teile : {skiped}</div>
+        </>
       )}
     </>
   );
