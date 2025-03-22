@@ -1,0 +1,10 @@
+.resultsShow div {
+  width: 48%;
+  height: 70%;
+  text-align: center;
+  color: wheat;
+  font-size: 2rem;
+}
+.itemValue {
+  font-size: 6rem;
+}

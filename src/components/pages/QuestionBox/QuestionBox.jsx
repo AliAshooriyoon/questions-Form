@@ -3,6 +3,7 @@ import "./QuestionBox.css";
 import { questions } from "../../questions";
 import { useEffect } from "react";
 import { useRef } from "react";
+import Result from "../Result/Result";
 const QuestionBox = () => {
   //disable-eslint-next-line
   const [allQuestions, setAllQuestions] = useState(questions);
@@ -62,7 +63,7 @@ const QuestionBox = () => {
                 style={{ width: `${timer * 20}%` }}
               ></div>
             </div>
-            <div className="questionBox__titleBox flex flex-wrap gap-6">
+            <div className="questionBox__titleBox flex flex-wrap gap-6 flex-col">
               <h2 className="titleBox__title text-center mb-2 mx-auto">
                 {counter <= allQuestions.length &&
                   allQuestions[counter - 1].title}
@@ -82,8 +83,9 @@ const QuestionBox = () => {
         </>
       ) : (
         <>
-          <div className="endBox">
-            Skipped Teile : {skiped} <br /> Note ist : {note}{" "}
+          <div className="endBox w-full h-full">
+            {/* Skipped Teile : {skiped} <br /> Note ist : {note}{" "} */}
+            <Result skiped={skiped} note={note} />
           </div>
         </>
       )}
